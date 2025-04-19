@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import axios from 'axios';
 import { useState } from 'react';
-import { Loader2 } from 'lucide-react';
+import { CheckCircle2, Loader2 } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -43,6 +43,7 @@ declare global {
 export default function RegistrationForm() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
   const {
     register,
@@ -53,18 +54,7 @@ export default function RegistrationForm() {
     resolver: zodResolver(formSchema),
   });
 
-  // const onSubmit = async (data: FormData) => {
-  //   setSubmitting(true);
-  //   try {
-  //     await axios.post('https://your-laravel-domain.com/api/expo-registration', data);
-  //     setSuccess(true);
-  //     reset();
-  //   } catch (error) {
-  //     console.error('Submission error:', error);
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  // };
+
 
 
   const onSubmit = async (data: FormData) => {
@@ -80,7 +70,10 @@ export default function RegistrationForm() {
       });
   
       setSuccess(true);
+      setShowForm(false);
       reset();
+      //setTimeout(() => setShowForm(true), 3000);
+
     } catch (error) {
       console.error('reCAPTCHA or form submit failed:', error);
     } finally {
@@ -91,7 +84,7 @@ export default function RegistrationForm() {
 
   return (
     <div className="w-full">
-      {/* Full-width Banner */}
+   
       <Image
         src="/banner.png"
         alt="Expo Banner"
@@ -100,10 +93,10 @@ export default function RegistrationForm() {
         className="w-full h-auto object-cover"
       />
 
-      {/* Main Content */}
+
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-[5%] py-10">
         <div className="w-full max-w-7xl flex flex-col-reverse md:flex-row gap-10">
-          {/* LEFT: Info Section */}
+
           <div className="flex-1 flex flex-col  space-y-4">
             <h2 className="text-3xl font-bold text-gray-800 leading-snug mt-4"> 
               Empowering Hospitality Excellence Through Innovation
@@ -113,18 +106,60 @@ export default function RegistrationForm() {
               technologies reshaping the hospitality industry in Saudi Arabia and beyond. Meet the
               pioneers and explore the future at our exclusive expo in Jeddah.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 items-center justify-start">
-              <Image src="/logo.png" alt="Sponsor 1" width={160} height={130} className="object-contain mx-auto" />
-              <Image src="/logo.png" alt="Sponsor 2" width={160} height={130} className="object-contain mx-auto" />
-              <Image src="/logo.png" alt="Sponsor 3" width={160} height={130} className="object-contain mx-auto" />
-            </div>
-            
+            <div className="w-full aspect-video mt-4">
+  <iframe
+    className="w-full h-full rounded-md shadow-md"
+    src="https://www.youtube.com/embed/uYUofwPcKzY?controls=0&modestbranding=1&rel=0&showinfo=0"
+    title="Hotel Supply & Hospitality 2024 Expo - Jeddah, Saudi Arabia"
+  
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+</div>
+<div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl  border border-gray-200 text-center space-y-4">
+  <div className="flex flex-col items-center">
+    <div className="bg-white p-3">
+      <Image
+        src="/JVLogo-01.png"
+        alt="Jeddah Vision Logo"
+        width={180}
+        height={180}
+        className="object-contain"
+      />
+    </div>
+  </div>
+
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-700 pt-4">
+    <div>
+      <p className="font-semibold text-gray-800 mb-1">Website</p>
+      <a
+        href="https://www.jeddah-vision.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 underline hover:text-blue-800 transition"
+      >
+        www.jeddah-vision.com
+      </a>
+    </div>
+    <div>
+      <p className="font-semibold text-gray-800 mb-1">Phone</p>
+      <p>0548037872</p>
+    </div>
+    <div>
+      <p className="font-semibold text-gray-800 mb-1">Email</p>
+      <p>info@jeddah-vision.com</p>
+    </div>
+  </div>
+</div>
+
           </div>
 
           {/* RIGHT: Form */}
           <div className="flex-1">
+          {showForm ? (
             <Card className="w-full shadow-xl border border-gray-200">
               <CardContent className="py-8">
+            
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   {[
                     { label: 'الاسم / Your Name', name: 'name' },
@@ -152,7 +187,7 @@ export default function RegistrationForm() {
                     </div>
                   ))}
 
-                  {/* Radio Selection */}
+                 
                   <div className="space-y-2">
                     <Label className="text-sm text-gray-700 font-medium block mb-1 pb-2">
                       الحضور كـ / Attending as
@@ -186,7 +221,7 @@ export default function RegistrationForm() {
                     )}
                   </div>
 
-                  {/* Submit Button */}
+                  
                   <Button
                     type="submit"
                     disabled={submitting}
@@ -204,6 +239,20 @@ export default function RegistrationForm() {
                 </form>
               </CardContent>
             </Card>
+          ) : (
+            <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+            <Card className="w-full max-w-md shadow-xl border border-gray-200">
+              <CardContent className="py-14 flex flex-col items-center justify-center text-center">
+                <CheckCircle2 className="text-green-500 w-12 h-12 mb-3" />
+                <h3 className="text-lg font-semibold text-gray-700">Registration Submitted</h3>
+                <p className="text-sm text-gray-600 max-w-sm mt-2">
+                  Thank you! Your registration has been received. You will receive your badge email once your request is approved.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          )}
           </div>
         </div>
       </div>
