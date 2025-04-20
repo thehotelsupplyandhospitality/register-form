@@ -22,7 +22,7 @@ export const formSchema = z.object({
     .min(3, { message: 'Please enter your contact number.' }),
   email: z.string().email({ message: 'Please enter a email address.' }),
   company: z.string().min(1, { message: 'Please enter your company.' }),
-  designation: z.string().min(1, { message: 'Please enter your designation.' }),
+  designation: z.string().nullable().optional(),
   city: z.string().min(1, { message: 'Please enter your city.' }),
   country: z.string().min(1, { message: 'Please enter your country.' }),
   attendanceType: z.enum(['Exhibitor', 'Visitor'], {
@@ -56,6 +56,7 @@ export default function RegistrationForm() {
   });
 
 
+  const requiredFields = ['name', 'contact', 'email', 'company', 'city', 'country'];
 
 
   const onSubmit = async (data: FormData) => {
@@ -172,9 +173,12 @@ export default function RegistrationForm() {
                     { label: 'دولة / Country', name: 'country' },
                   ].map(({ label, name }) => (
                     <div key={name} className="flex flex-col gap-1">
-                      <Label htmlFor={name} className="text-sm text-gray-700 font-medium pb-2">
-                        {label}
-                      </Label>
+                      <Label htmlFor={name} className="text-sm text-gray-700 font-medium pb-2">{label}
+                      {requiredFields.includes(name) && (
+                        <span style={{ color: 'red' }}>*</span>
+                      )}
+                    </Label>
+
                       <Input
                         id={name}
                         className="rounded-md border border-gray-300 focus-visible:ring-2 focus-visible:ring-primary px-4 py-2 text-base"
@@ -191,7 +195,7 @@ export default function RegistrationForm() {
                  
                   <div className="space-y-2">
                     <Label className="text-sm text-gray-700 font-medium block mb-1 pb-2">
-                      الحضور كـ / Attending as
+                      الحضور كـ / Attending as <span style={{ color: 'red' }}>*</span>
                     </Label>
 
                     <Controller
@@ -215,8 +219,9 @@ export default function RegistrationForm() {
             htmlFor={`attend-${value}`}
             className="text-sm font-medium text-gray-700 cursor-pointer"
           >
-            {value}
+            {value} 
           </Label>
+          
         </div>
       ))}
     </RadioGroup>

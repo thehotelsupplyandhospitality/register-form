@@ -95,13 +95,13 @@ export default function BadgePage() {
                 <img src='/banner.png' style="height:20px" />
                 <img src='/banner.png' style="height:20px" />
               </div>
-              <div style="font-weight:bold;text-align:center; padding-top: 3px;">17 – 19 SEPTEMBER 2024 | 2PM – 10PM</div>
-              <div style="text-align:center; padding-bottom: 8px;">RIYADH FRONT EXHIBITION & CONFERENCE CENTER</div>
+              <div style="font-weight:bold;text-align:center; padding-top: 3px;">18–20 August 2025 (Monday–Wednesday)</div>
+              <div style="text-align:center; padding-bottom: 8px;">Jeddah Exhibition Center</div>
             </div>
 
             <div style="text-align:center;padding:20px 20px 16px 20px">
               <div style="font-size:22px;font-weight:bold;margin-bottom:4px">${badgeData.name}</div>
-              <div style="font-size:14px;color:#555;margin-bottom:4px">${badgeData.designation}</div>
+              ${badgeData.designation ? `<div style="font-size:14px;color:#555;margin-bottom:4px">${badgeData.designation}</div>` : ''}
               <div style="font-size:15px;font-weight:500;margin-bottom:10px;color:#000; padding-bottom: 8px;">${badgeData.company}</div>
               <div>${qr}</div>
               <div style="font-size:10px;color:#666;margin-top:10px;word-break:break-word">${badgeData.qrId}</div>
