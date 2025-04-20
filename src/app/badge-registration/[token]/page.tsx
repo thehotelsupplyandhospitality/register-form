@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -19,16 +20,30 @@ export default function BadgePage() {
   const [badgeData, setBadgeData] = useState<BadgeData | null>(null);
 
   useEffect(() => {
+    if (!token) return;
 
-    setTimeout(() => {
-      setBadgeData({
-        name: "Majdi B",
-        company: "Jeddah Vision",
-        designation: "Director",
-        type: "Visitor",
-        qrId: token as string,
+    const fetchData = async () => {
+      const captchaToken = await new Promise<string>((resolve) => {
+        window.grecaptcha.ready(() => {
+          window.grecaptcha
+            .execute('6LczrR0rAAAAAOgAYqgFiME6l-Sl5bs1ErIKJQla', {
+              action: "badge_view",
+            })
+            .then(resolve);
+        });
       });
-    }, 300);
+
+      const res = await fetch(`https://www.jeddah-vision.com/expo-registration/${token}?captchaToken=${captchaToken}`);
+      const data = await res.json();
+
+      if (res.ok) {
+        setBadgeData(data.data);
+      } else {
+        alert(data.message || "Unable to load badge data.");
+      }
+    };
+
+    fetchData();
   }, [token]);
 
   const handleDownload = async () => {
@@ -53,14 +68,12 @@ export default function BadgePage() {
 
     pdf.addImage(imgData, "PNG", 0, 0, canvas.width / 3, canvas.height / 3);
     pdf.save(`${badgeData?.name || "badge"}.pdf`);
-
-    // Future: axios.post(`/api/badge-download-log`, { qrId: badgeData.qrId });
   };
 
   const renderIframeContent = () => {
     if (!badgeData) return "";
 
-    const qr = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=https://yourdomain.com/badge-registration/${badgeData.qrId}&size=150x150" style='border: 1px solid #ccc; padding: 6px; border-radius: 4px;'/>`;
+    const qr = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=https://hotel-hospitality-register.vercel.app/badge-registration/${badgeData.qrId}&size=150x150" style='border: 1px solid #ccc; padding: 6px; border-radius: 4px;'/>`;
 
     return `
       <html>
@@ -95,7 +108,7 @@ export default function BadgePage() {
             </div>
 
             <div style="background:#1A2330;color:#fff;text-align:center;padding:14px 10px 26px;font-size:16px;font-weight:bold">
-              ${badgeData.type.toUpperCase()}
+              ${badgeData.type === "Visitor" ? "VISITOR" : "EXHIBITOR"}
             </div>
           </div>
         </body>

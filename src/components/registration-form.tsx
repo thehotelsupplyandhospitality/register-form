@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import axios from 'axios';
@@ -50,6 +50,7 @@ export default function RegistrationForm() {
     handleSubmit,
     formState: { errors },
     reset,
+    control
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
@@ -193,28 +194,34 @@ export default function RegistrationForm() {
                       الحضور كـ / Attending as
                     </Label>
 
-                    <RadioGroup
-                      defaultValue="Visitor"
-                      className="flex items-center gap-6"
-                      {...register('attendanceType')}
-                    >
-                      {['Exhibitor', 'Visitor'].map((value) => (
-                        <div key={value} className="flex items-center gap-2">
-                          <RadioGroupItem
-                            value={value}
-                            id={`attend-${value}`}
-                            className="h-5 w-5 border-2 border-gray-400 data-[state=checked]:border-primary data-[state=checked]:bg-primary"
-                            {...register('attendanceType')}
-                          />
-                          <Label
-                            htmlFor={`attend-${value}`}
-                            className="text-sm font-medium text-gray-700 cursor-pointer"
-                          >
-                            {value}
-                          </Label>
-                        </div>
-                      ))}
-                    </RadioGroup>
+                    <Controller
+  name="attendanceType"
+  control={control}
+  defaultValue="Visitor"
+  render={({ field }) => (
+    <RadioGroup
+      value={field.value}
+      onValueChange={field.onChange}
+      className="flex items-center gap-6"
+    >
+      {['Exhibitor', 'Visitor'].map((value) => (
+        <div key={value} className="flex items-center gap-2">
+          <RadioGroupItem
+            value={value}
+            id={`attend-${value}`}
+            className="h-5 w-5 border-2 border-gray-400 data-[state=checked]:border-primary data-[state=checked]:bg-primary"
+          />
+          <Label
+            htmlFor={`attend-${value}`}
+            className="text-sm font-medium text-gray-700 cursor-pointer"
+          >
+            {value}
+          </Label>
+        </div>
+      ))}
+    </RadioGroup>
+  )}
+/>
 
                     {errors.attendanceType && (
                       <p className="text-sm text-red-500 mt-1">{errors.attendanceType.message}</p>
