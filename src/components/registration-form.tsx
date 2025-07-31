@@ -118,20 +118,27 @@ export default function RegistrationForm() {
     allowFullScreen
   />
 </div>
-<div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl  border border-gray-200 text-center space-y-4">
-  <div className="flex flex-col items-center">
-    <div className="bg-white p-3">
-      <Image
-        src="/JVLogo-01.png"
-        alt="Jeddah Vision Logo"
-        width={180}
-        height={180}
-        className="object-contain"
-      />
-    </div>
-  </div>
+<div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl  border border-gray-200 text-center space-y-2">
+<div className="flex flex-row items-center justify-center gap-x-12 bg-white p-3">
+  <Image
+    src="/JVLogo.svg"
+    alt="Jeddah Vision Logo"
+    width={180}
+    height={180}
+    className="object-contain"
+  />
+  <Image
+    src="/NajoomTechLogo-cropped.svg"
+    alt="Najoom Tech"
+    width={220}
+    height={220}
+    className="object-contain"
+  />
+</div>
 
-  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-700 pt-4">
+
+
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-700 pt-2">
     <div>
       <p className="font-semibold text-gray-800 mb-1">Website</p>
       <a
