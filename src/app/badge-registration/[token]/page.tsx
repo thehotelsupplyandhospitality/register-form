@@ -73,7 +73,7 @@ export default function BadgePage() {
   const renderIframeContent = () => {
     if (!badgeData) return "";
 
-    const qr = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=https://jeddah-vision-expo-register.vercel.app/badge-registration/${badgeData.qrId}&size=150x150" style='border: 1px solid #ccc; padding: 6px; border-radius: 4px;'/>`;
+    const qr = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=https://jeddah-vision-asean-expo-register.vercel.app/badge-registration/${badgeData.qrId}&size=150x150" style='border: 1px solid #ccc; padding: 6px; border-radius: 4px;'/>`;
 
     return `
       <html>
@@ -91,9 +91,7 @@ export default function BadgePage() {
           ">
             <div style="background:#000;color:#fff;font-size:10px;padding:6px 10px">
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-                <img src='/banner.png' style="height:20px" />
-                <img src='/banner.png' style="height:20px" />
-                <img src='/banner.png' style="height:20px" />
+               
               </div>
               <div style="font-weight:bold;text-align:center; padding-top: 3px;"> 27 – 29 October 2025 (Monday–Wednesday)</div>
               <div style="text-align:center; padding-bottom: 8px;">Jeddah Exhibition Center</div>
