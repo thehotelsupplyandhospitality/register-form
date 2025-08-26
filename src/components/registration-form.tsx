@@ -170,13 +170,13 @@ export default function RegistrationForm() {
             
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   {[
-                    { label: 'الاسم / Your Name', name: 'name' },
-                    { label: 'رقم الجوال / Contact Number', name: 'contact' },
-                    { label: 'البريد / Email', name: 'email' },
-                    { label: 'اسم الشركة / Company Name', name: 'company' },
-                    { label: 'المنصب / Designation', name: 'designation' },
-                    { label: 'مدينة / City', name: 'city' },
-                    { label: 'دولة / Country', name: 'country' },
+                    { label: 'Your Name', name: 'name' },
+                    { label: 'Contact Number', name: 'contact' },
+                    { label: 'Email', name: 'email' },
+                    { label: 'Company Name', name: 'company' },
+                    { label: 'Designation', name: 'designation' },
+                    { label: 'City', name: 'city' },
+                    { label: 'Country', name: 'country' },
                   ].map(({ label, name }) => (
                     <div key={name} className="flex flex-col gap-1">
                       <Label htmlFor={name} className="text-sm text-gray-700 font-medium pb-2">{label}
@@ -201,7 +201,7 @@ export default function RegistrationForm() {
                  
                   <div className="space-y-2">
                     <Label className="text-sm text-gray-700 font-medium block mb-1 pb-2">
-                      الحضور كـ / Attending as <span style={{ color: 'red' }}>*</span>
+                      Attending as <span style={{ color: 'red' }}>*</span>
                     </Label>
 
                     <Controller
