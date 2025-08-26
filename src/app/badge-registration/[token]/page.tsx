@@ -95,7 +95,7 @@ export default function BadgePage() {
                 <img src='/banner.png' style="height:20px" />
                 <img src='/banner.png' style="height:20px" />
               </div>
-              <div style="font-weight:bold;text-align:center; padding-top: 3px;">18–20 August 2025 (Monday–Wednesday)</div>
+              <div style="font-weight:bold;text-align:center; padding-top: 3px;"> 27 – 29 October 2025 (Monday–Wednesday)</div>
               <div style="text-align:center; padding-bottom: 8px;">Jeddah Exhibition Center</div>
             </div>
 
