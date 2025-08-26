@@ -10,7 +10,7 @@ interface BadgeData {
   name: string;
   company: string;
   designation: string;
-  attendanceType: "Visitor" | "Exhibitor";
+  attendanceType: string;
   qrId: string;
 }
 
@@ -108,7 +108,7 @@ export default function BadgePage() {
             </div>
 
             <div style="background:#1A2330;color:#fff;text-align:center;padding:14px 10px 26px;font-size:16px;font-weight:bold">
-              ${badgeData.attendanceType === "Visitor" ? "VISITOR" : "EXHIBITOR"}
+              ${badgeData.attendanceType}
             </div>
           </div>
         </body>
