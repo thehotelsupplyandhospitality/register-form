@@ -100,12 +100,13 @@ export default function RegistrationForm() {
         <div className="w-full max-w-7xl flex flex-col-reverse md:flex-row gap-10">
 
           <div className="flex-1 flex flex-col  space-y-4">
-            <h2 className="text-3xl font-bold text-gray-800 leading-snug mt-4"> 
-              Explore ASEAN Expo Experiences
-            </h2>
-            <p className="text-gray-600 text-sm leading-relaxed max-w-md">
-              Discover unparalleled opportunities for business growth, innovation & cultural exchange at the ASEAN Expo 2025 where industries, investors & nations converge.
-            </p>
+           <h2 className="text-3xl font-bold text-gray-800 leading-snug mt-4"> 
+  Explore ASEAN Expo 2025
+</h2>
+<p className="text-gray-600 text-sm leading-relaxed max-w-md">
+  Step into a vibrant hub where global industries, visionary leaders, and cultural showcases come together. At the ASEAN Expo 2025, discover new markets, forge powerful connections, and experience the future of collaboration across Asia and beyond.
+</p>
+
             <div className="w-full aspect-video mt-4">
   <iframe
     className="w-full h-full rounded-md shadow-md"
