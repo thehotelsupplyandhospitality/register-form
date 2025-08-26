@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hotel Supply & Hospitality Expo",
-  description: "Join the Hotel Supply & Hospitality Expo Saudi Arabia 2025 – Saudi Arabia's leading event for hotel supplies, hospitality solutions, and F&B innovations. Explore strategic sponsorship packages, exhibitor benefits, and networking opportunities in Jeddah.",
- 
+  title: "Explore ASEAN Expo Highlights and Experiences",
+  description:
+    "Discover unparalleled opportunities for business growth, innovation, and cultural exchange at the ASEAN Expo 2025—where industries, investors, and nations converge.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        
         <script
           src="https://www.google.com/recaptcha/api.js?render=6LczrR0rAAAAAOgAYqgFiME6l-Sl5bs1ErIKJQla"
           async

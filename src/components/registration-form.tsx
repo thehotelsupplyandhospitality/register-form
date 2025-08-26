@@ -101,12 +101,10 @@ export default function RegistrationForm() {
 
           <div className="flex-1 flex flex-col  space-y-4">
             <h2 className="text-3xl font-bold text-gray-800 leading-snug mt-4"> 
-              Empowering Hospitality Excellence Through Innovation
+              Explore ASEAN Expo Experiences
             </h2>
             <p className="text-gray-600 text-sm leading-relaxed max-w-md">
-              Discover cutting-edge hotel supplies, smart guest solutions, and sustainable
-              technologies reshaping the hospitality industry in Saudi Arabia and beyond. Meet the
-              pioneers and explore the future at our exclusive expo in Jeddah.
+              Discover unparalleled opportunities for business growth, innovation & cultural exchange at the ASEAN Expo 2025 where industries, investors & nations converge.
             </p>
             <div className="w-full aspect-video mt-4">
   <iframe
