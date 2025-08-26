@@ -10,7 +10,7 @@ interface BadgeData {
   name: string;
   company: string;
   designation: string;
-  type: "Visitor" | "Exhibitor";
+  attendanceType: "Visitor" | "Exhibitor";
   qrId: string;
 }
 
@@ -73,7 +73,7 @@ export default function BadgePage() {
   const renderIframeContent = () => {
     if (!badgeData) return "";
 
-    const qr = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=https://hotel-hospitality-register.vercel.app/badge-registration/${badgeData.qrId}&size=150x150" style='border: 1px solid #ccc; padding: 6px; border-radius: 4px;'/>`;
+    const qr = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=https://jeddah-vision-expo-register.vercel.app/badge-registration/${badgeData.qrId}&size=150x150" style='border: 1px solid #ccc; padding: 6px; border-radius: 4px;'/>`;
 
     return `
       <html>
@@ -108,7 +108,7 @@ export default function BadgePage() {
             </div>
 
             <div style="background:#1A2330;color:#fff;text-align:center;padding:14px 10px 26px;font-size:16px;font-weight:bold">
-              ${badgeData.type === "Visitor" ? "VISITOR" : "EXHIBITOR"}
+              ${badgeData.attendanceType === "Visitor" ? "VISITOR" : "EXHIBITOR"}
             </div>
           </div>
         </body>
