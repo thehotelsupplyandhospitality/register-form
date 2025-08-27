@@ -118,7 +118,7 @@ export default function RegistrationForm() {
   />
 </div>
 <div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl  border border-gray-200 text-center space-y-2">
-<div className="flex flex-row items-center justify-center gap-x-12 bg-white p-3">
+<div className="flex flex-col sm:flex-row items-center justify-center gap-y-6 sm:gap-x-12 bg-white p-3">
   <Image
     src="/JVLogo.svg"
     alt="Jeddah Vision Logo"
@@ -134,6 +134,7 @@ export default function RegistrationForm() {
     className="object-contain"
   />
 </div>
+
 
 
 
