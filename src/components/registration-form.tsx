@@ -110,8 +110,8 @@ export default function RegistrationForm() {
             <div className="w-full aspect-video mt-4">
   <iframe
     className="w-full h-full rounded-md shadow-md"
-    src="https://www.youtube.com/embed/uYUofwPcKzY?controls=0&modestbranding=1&rel=0&showinfo=0"
-    title="Hotel Supply & Hospitality 2024 Expo - Jeddah, Saudi Arabia"
+    src="https://www.youtube.com/embed/75hJ9uggjj0?controls=0&modestbranding=1&rel=0&showinfo=0"
+    title="ASEAN Expo 2025 - Jeddah, Saudi Arabia"
   
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen
